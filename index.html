@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Anushka 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== PARTICLES BACKGROUND ========== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ========== FLOATING HEARTS ========== -->
+  <div id="hearts-container"></div>
+
+  <!-- ========== CONFETTI ========== -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========== MUSIC TOGGLE ========== -->
+  <button id="music-btn" title="Toggle music">🎵</button>
+  <audio id="bg-music" loop>
+    <!-- Add your music.mp3 file to the project folder and uncomment below -->
+    <!-- <source src="music.mp3" type="audio/mpeg" /> -->
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ============================================================ -->
+  <!--                    COUNTDOWN SCREEN                          -->
+  <!-- ============================================================ -->
+  <section id="countdown-screen">
+    <div class="countdown-content">
+      <p class="countdown-subtitle">something special is coming for</p>
+      <h1 class="countdown-name">Anushka</h1>
+      <p class="countdown-hint">on her birthday&nbsp;🌸</p>
+
+      <div class="timer-wrapper">
+        <div class="timer-block">
+          <span class="timer-digit" id="cd-days">00</span>
+          <span class="timer-label">days</span>
+        </div>
+        <div class="timer-separator">:</div>
+        <div class="timer-block">
+          <span class="timer-digit" id="cd-hours">00</span>
+          <span class="timer-label">hours</span>
+        </div>
+        <div class="timer-separator">:</div>
+        <div class="timer-block">
+          <span class="timer-digit" id="cd-minutes">00</span>
+          <span class="timer-label">minutes</span>
+        </div>
+        <div class="timer-separator">:</div>
+        <div class="timer-block">
+          <span class="timer-digit" id="cd-seconds">00</span>
+          <span class="timer-label">seconds</span>
+        </div>
+      </div>
+
+      <p class="countdown-lock">🔒 unlocks at midnight · April 8</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--                    BIRTHDAY SCREEN                           -->
+  <!-- ============================================================ -->
+  <section id="birthday-screen" class="hidden">
+
+    <!-- HERO -->
+    <div class="hero" id="section-hero">
+      <div class="hero-inner">
+        <p class="hero-pre">happy birthday,</p>
+        <h1 class="hero-name" id="hero-name-text">Anushka</h1>
+        <p class="hero-sub">Today is all about you 🌸</p>
+        <a href="#section-letter" class="scroll-btn">open your surprise ↓</a>
+      </div>
+    </div>
+
+    <!-- LOVE LETTER -->
+    <div class="section letter-section" id="section-letter">
+      <div class="letter-card">
+        <div class="letter-header">
+          <span class="letter-icon">💌</span>
+          <h2 class="letter-title">A letter for you</h2>
+        </div>
+        <div class="letter-body" id="letter-body">
+          <!-- Letter content will be replaced here — add yours in script.js -->
+        </div>
+        <p class="letter-sign">— yours, always 💕</p>
+      </div>
+    </div>
+
+    <!-- POLAROID GALLERY -->
+    <div class="section gallery-section" id="section-gallery">
+      <h2 class="section-title">us, always ✨</h2>
+      <p class="section-subtitle">some of my favourite moments with you</p>
+      <div class="polaroid-grid" id="polaroid-grid">
+        <!-- Polaroids are rendered by script.js -->
+      </div>
+    </div>
+
+    <!-- WISHES SECTION -->
+    <div class="section wishes-section" id="section-wishes">
+      <div class="wishes-card">
+        <div class="wish-balloons">🎈🎈🎈</div>
+        <h2 class="wishes-title">My wishes for you</h2>
+        <ul class="wishes-list">
+          <li>✨ That every day feels as magical as you make mine</li>
+          <li>🌸 That you always know just how loved you are</li>
+          <li>🎂 A year full of everything you deserve</li>
+          <li>💫 Endless happiness, laughter, and all your dreams</li>
+          <li>🌙 And most of all — more memories with you</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bday-footer">
+      <p>made with 💕 just for you, Anushka</p>
+      <p class="footer-date">April 8 🌸</p>
+    </footer>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
