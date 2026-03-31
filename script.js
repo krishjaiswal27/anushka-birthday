@@ -35,14 +35,14 @@ const PLACEHOLDER_COUNT = 5;
 
 
 /* ── ELEMENTS ────────────────────────────────────────────── */
-const cdScreen  = document.getElementById('countdown-screen');
-const bdScreen  = document.getElementById('birthday-screen');
-const cdDays    = document.getElementById('cd-days');
-const cdHours   = document.getElementById('cd-hours');
-const cdMins    = document.getElementById('cd-minutes');
-const cdSecs    = document.getElementById('cd-seconds');
-const musicBtn  = document.getElementById('music-btn');
-const bgMusic   = document.getElementById('bg-music');
+const cdScreen = document.getElementById('countdown-screen');
+const bdScreen = document.getElementById('birthday-screen');
+const cdDays = document.getElementById('cd-days');
+const cdHours = document.getElementById('cd-hours');
+const cdMins = document.getElementById('cd-minutes');
+const cdSecs = document.getElementById('cd-seconds');
+const musicBtn = document.getElementById('music-btn');
+const bgMusic = document.getElementById('bg-music');
 
 /* ── COUNTDOWN TIMER ─────────────────────────────────────── */
 function pad(n) { return String(n).padStart(2, '0'); }
@@ -58,7 +58,7 @@ function setDigit(el, value) {
 }
 
 function tick() {
-  const now  = new Date();
+  const now = new Date();
   const diff = BIRTHDAY - now;
 
   if (diff <= 0) {
@@ -67,15 +67,15 @@ function tick() {
   }
 
   const totalSecs = Math.floor(diff / 1000);
-  const days  = Math.floor(totalSecs / 86400);
+  const days = Math.floor(totalSecs / 86400);
   const hours = Math.floor((totalSecs % 86400) / 3600);
-  const mins  = Math.floor((totalSecs % 3600) / 60);
-  const secs  = totalSecs % 60;
+  const mins = Math.floor((totalSecs % 3600) / 60);
+  const secs = totalSecs % 60;
 
-  setDigit(cdDays,  days);
+  setDigit(cdDays, days);
   setDigit(cdHours, hours);
-  setDigit(cdMins,  mins);
-  setDigit(cdSecs,  secs);
+  setDigit(cdMins, mins);
+  setDigit(cdSecs, secs);
 }
 
 tick();
@@ -99,7 +99,7 @@ function unlock() {
 
 /* ── HERO NAME SHIMMER ───────────────────────────────────── */
 function initHeroName() {
-  const el   = document.getElementById('hero-name-text');
+  const el = document.getElementById('hero-name-text');
   const name = el.textContent;
   el.textContent = '';
   [...name].forEach((ch, i) => {
@@ -137,9 +137,9 @@ function buildLetter() {
 
 /* ── POLAROID GALLERY ────────────────────────────────────── */
 function buildGallery() {
-  const grid   = document.getElementById('polaroid-grid');
+  const grid = document.getElementById('polaroid-grid');
   const source = PHOTOS.length > 0 ? PHOTOS : null;
-  const count  = source ? source.length : PLACEHOLDER_COUNT;
+  const count = source ? source.length : PLACEHOLDER_COUNT;
 
   for (let i = 0; i < count; i++) {
     const card = document.createElement('div');
@@ -200,14 +200,14 @@ function initScrollReveal() {
 }
 
 /* ── FLOATING HEARTS ─────────────────────────────────────── */
-const heartEmojis = ['❤️','🩷','💕','💖','💗','💓','🌸','✨','💝','🫀'];
+const heartEmojis = ['❤️', '🩷', '💕', '💖', '💗', '💓', '🌸', '✨', '💝', '🫀'];
 const heartsContainer = document.getElementById('hearts-container');
 
 function spawnHeart() {
   const el = document.createElement('div');
   el.className = 'heart';
   el.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-  el.style.left     = `${Math.random() * 100}vw`;
+  el.style.left = `${Math.random() * 100}vw`;
   el.style.fontSize = `${Math.random() * 1.2 + 0.8}rem`;
   const dur = Math.random() * 5 + 6;
   el.style.animationDuration = `${dur}s`;
@@ -233,16 +233,16 @@ setInterval(() => {
 
 /* ── CONFETTI ────────────────────────────────────────────── */
 const confCanvas = document.getElementById('confetti-canvas');
-const confCtx    = confCanvas.getContext('2d');
+const confCtx = confCanvas.getContext('2d');
 let confettiPieces = [];
 let confettiActive = false;
 
 function launchConfetti() {
-  confCanvas.width  = window.innerWidth;
+  confCanvas.width = window.innerWidth;
   confCanvas.height = window.innerHeight;
   confettiActive = true;
 
-  const colors = ['#f472b6','#c4b5fd','#f5c6a0','#fb7185','#a78bfa','#fde68a','#ffffff'];
+  const colors = ['#f472b6', '#c4b5fd', '#f5c6a0', '#fb7185', '#a78bfa', '#fde68a', '#ffffff'];
   for (let i = 0; i < 200; i++) {
     confettiPieces.push({
       x: Math.random() * confCanvas.width,
@@ -283,20 +283,20 @@ function animateConfetti() {
 
 /* ── STARFIELD (PARTICLES CANVAS) ────────────────────────── */
 const pCanvas = document.getElementById('particles-canvas');
-const pCtx    = pCanvas.getContext('2d');
+const pCtx = pCanvas.getContext('2d');
 let stars = [];
 
 function initStars() {
-  pCanvas.width  = window.innerWidth;
+  pCanvas.width = window.innerWidth;
   pCanvas.height = window.innerHeight;
   stars = [];
   for (let i = 0; i < 130; i++) {
     stars.push({
-      x:    Math.random() * pCanvas.width,
-      y:    Math.random() * pCanvas.height,
-      r:    Math.random() * 1.4 + 0.3,
-      a:    Math.random(),
-      da:   (Math.random() * 0.005 + 0.003) * (Math.random() > 0.5 ? 1 : -1),
+      x: Math.random() * pCanvas.width,
+      y: Math.random() * pCanvas.height,
+      r: Math.random() * 1.4 + 0.3,
+      a: Math.random(),
+      da: (Math.random() * 0.005 + 0.003) * (Math.random() > 0.5 ? 1 : -1),
     });
   }
 }
@@ -319,7 +319,7 @@ drawStars();
 
 window.addEventListener('resize', () => {
   initStars();
-  confCanvas.width  = window.innerWidth;
+  confCanvas.width = window.innerWidth;
   confCanvas.height = window.innerHeight;
 });
 
@@ -333,7 +333,7 @@ musicBtn.addEventListener('click', () => {
     musicBtn.classList.remove('playing');
     musicPlaying = false;
   } else {
-    bgMusic.play().catch(() => {});
+    bgMusic.play().catch(() => { });
     musicBtn.textContent = '🔊';
     musicBtn.classList.add('playing');
     musicPlaying = true;
@@ -406,23 +406,23 @@ function createBalloons() {
   });
 
   allBalloons.forEach((b, idx) => {
-    const cls   = colorClasses[Math.floor(Math.random() * colorClasses.length)];
+    const cls = colorClasses[Math.floor(Math.random() * colorClasses.length)];
     const delay = (Math.random() * 2.5).toFixed(2);
-    const dur   = (3.2 + Math.random() * 1.6).toFixed(2);
+    const dur = (3.2 + Math.random() * 1.6).toFixed(2);
 
     const el = document.createElement('div');
     el.className = `balloon-item ${cls}`;
-    el.style.left             = `calc(${b.x}% - ${b.size / 2}px)`;
-    el.style.top              = `calc(${b.y}% - ${b.size * 0.58}px)`;
-    el.style.width            = `${b.size}px`;
-    el.style.height           = `${b.size * 1.12}px`;
-    el.style.animationDelay   = `${delay}s`;
-    el.style.animationDuration= `${dur}s`;
-    el.style.zIndex           = idx;
+    el.style.left = `calc(${b.x}% - ${b.size / 2}px)`;
+    el.style.top = `calc(${b.y}% - ${b.size * 0.58}px)`;
+    el.style.width = `${b.size}px`;
+    el.style.height = `${b.size * 1.12}px`;
+    el.style.animationDelay = `${delay}s`;
+    el.style.animationDuration = `${dur}s`;
+    el.style.zIndex = idx;
 
     // string
     const str = document.createElement('div');
-    str.className   = 'balloon-string';
+    str.className = 'balloon-string';
     str.style.height = `${b.stringLen}px`;
     el.appendChild(str);
 
