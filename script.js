@@ -365,3 +365,70 @@ window.previewBirthday = function () {
   shootHearts(18);
   console.log('🎉 Birthday screen unlocked for preview!');
 };
+
+/* ── BALLOON BACKGROUND ───────────────────────────────────── */
+function createBalloons() {
+  const container = document.getElementById('balloon-bg');
+  if (!container) return;
+
+  const colorClasses = ['bpink-1', 'bpink-2', 'bpink-3', 'bpink-4', 'bpink-5'];
+  const allBalloons = [];
+
+  // ── ARCH (semicircle from bottom-left, over top, to bottom-right) ──
+  // Arch base ends at ~y=72%, peaks at ~y=10%
+  // x spans from ~8% (left) to ~92% (right)
+  const archCount = 12;
+  for (let i = 0; i <= archCount; i++) {
+    const t = (i / archCount) * Math.PI;       // 0 → π
+    const xPos = 50 - 43 * Math.cos(t);        // 7% → 93%
+    const yPos = 72 - 62 * Math.sin(t);        // peaks at 10%
+    const size = 68 + Math.random() * 22;
+    const stringLen = 55 + Math.random() * 35;
+    allBalloons.push({ x: xPos, y: yPos, size, stringLen, type: 'arch' });
+  }
+
+  //  ── LEFT CLUSTER (below the left arch base) ──
+  const leftCluster = [
+    [5, 74], [13, 79], [3, 83], [9, 89], [18, 85], [5, 94], [14, 93],
+  ];
+  leftCluster.forEach(([x, y]) => {
+    const size = 50 + Math.random() * 32;
+    allBalloons.push({ x, y, size, stringLen: 38, type: 'cluster' });
+  });
+
+  // ── RIGHT CLUSTER (below the right arch base) ──
+  const rightCluster = [
+    [95, 74], [87, 79], [97, 83], [91, 89], [82, 85], [95, 94], [86, 93],
+  ];
+  rightCluster.forEach(([x, y]) => {
+    const size = 50 + Math.random() * 32;
+    allBalloons.push({ x, y, size, stringLen: 38, type: 'cluster' });
+  });
+
+  allBalloons.forEach((b, idx) => {
+    const cls   = colorClasses[Math.floor(Math.random() * colorClasses.length)];
+    const delay = (Math.random() * 2.5).toFixed(2);
+    const dur   = (3.2 + Math.random() * 1.6).toFixed(2);
+
+    const el = document.createElement('div');
+    el.className = `balloon-item ${cls}`;
+    el.style.left             = `calc(${b.x}% - ${b.size / 2}px)`;
+    el.style.top              = `calc(${b.y}% - ${b.size * 0.58}px)`;
+    el.style.width            = `${b.size}px`;
+    el.style.height           = `${b.size * 1.12}px`;
+    el.style.animationDelay   = `${delay}s`;
+    el.style.animationDuration= `${dur}s`;
+    el.style.zIndex           = idx;
+
+    // string
+    const str = document.createElement('div');
+    str.className   = 'balloon-string';
+    str.style.height = `${b.stringLen}px`;
+    el.appendChild(str);
+
+    container.appendChild(el);
+  });
+}
+
+createBalloons();
+
